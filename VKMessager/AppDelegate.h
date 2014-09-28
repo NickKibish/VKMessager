@@ -10,9 +10,13 @@
 #import <CoreData/CoreData.h>
 #import <VKSdk.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+#define MY_APP_ID @"4562378"
+
+@interface AppDelegate : UIResponder <UIApplicationDelegate, VKSdkDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+
++ (AppDelegate *)shareDelegate;
 
 @end
 

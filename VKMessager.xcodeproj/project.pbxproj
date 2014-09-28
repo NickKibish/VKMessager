@@ -14,6 +14,7 @@
 		4304AE2D19D805AB00F43AA6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4304AE2C19D805AB00F43AA6 /* Images.xcassets */; };
 		4304AE3019D805AB00F43AA6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4304AE2E19D805AB00F43AA6 /* LaunchScreen.xib */; };
 		4304AE3C19D805AB00F43AA6 /* VKMessagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4304AE3B19D805AB00F43AA6 /* VKMessagerTests.m */; };
+		4304AE4719D8299900F43AA6 /* NKDialogList.m in Sources */ = {isa = PBXBuildFile; fileRef = 4304AE4619D8299900F43AA6 /* NKDialogList.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,8 @@
 		4304AE3519D805AB00F43AA6 /* VKMessagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VKMessagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4304AE3A19D805AB00F43AA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4304AE3B19D805AB00F43AA6 /* VKMessagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VKMessagerTests.m; sourceTree = "<group>"; };
+		4304AE4519D8299900F43AA6 /* NKDialogList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NKDialogList.h; path = src/NKDialogList.h; sourceTree = "<group>"; };
+		4304AE4619D8299900F43AA6 /* NKDialogList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NKDialogList.m; path = src/NKDialogList.m; sourceTree = "<group>"; };
 		64AA3A0BF8A6485B96B535EC /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D872E776E2D14608BD879A93 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -86,6 +89,8 @@
 			children = (
 				4304AE2019D805AB00F43AA6 /* AppDelegate.h */,
 				4304AE2119D805AB00F43AA6 /* AppDelegate.m */,
+				4304AE4519D8299900F43AA6 /* NKDialogList.h */,
+				4304AE4619D8299900F43AA6 /* NKDialogList.m */,
 				4304AE2919D805AB00F43AA6 /* Main.storyboard */,
 				4304AE2C19D805AB00F43AA6 /* Images.xcassets */,
 				4304AE2E19D805AB00F43AA6 /* LaunchScreen.xib */,
@@ -265,6 +270,7 @@
 			files = (
 				4304AE2219D805AB00F43AA6 /* AppDelegate.m in Sources */,
 				4304AE1F19D805AB00F43AA6 /* main.m in Sources */,
+				4304AE4719D8299900F43AA6 /* NKDialogList.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
