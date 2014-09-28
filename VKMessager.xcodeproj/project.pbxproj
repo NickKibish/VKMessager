@@ -7,10 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		054D1BE7EB384CCE9719CD95 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 64AA3A0BF8A6485B96B535EC /* libPods.a */; };
 		4304AE1F19D805AB00F43AA6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4304AE1E19D805AB00F43AA6 /* main.m */; };
 		4304AE2219D805AB00F43AA6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4304AE2119D805AB00F43AA6 /* AppDelegate.m */; };
-		4304AE2519D805AB00F43AA6 /* VKMessager.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4304AE2319D805AB00F43AA6 /* VKMessager.xcdatamodeld */; };
-		4304AE2819D805AB00F43AA6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4304AE2719D805AB00F43AA6 /* ViewController.m */; };
 		4304AE2B19D805AB00F43AA6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4304AE2919D805AB00F43AA6 /* Main.storyboard */; };
 		4304AE2D19D805AB00F43AA6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4304AE2C19D805AB00F43AA6 /* Images.xcassets */; };
 		4304AE3019D805AB00F43AA6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4304AE2E19D805AB00F43AA6 /* LaunchScreen.xib */; };
@@ -33,15 +32,14 @@
 		4304AE1E19D805AB00F43AA6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4304AE2019D805AB00F43AA6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4304AE2119D805AB00F43AA6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		4304AE2419D805AB00F43AA6 /* VKMessager.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VKMessager.xcdatamodel; sourceTree = "<group>"; };
-		4304AE2619D805AB00F43AA6 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		4304AE2719D805AB00F43AA6 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		4304AE2A19D805AB00F43AA6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4304AE2C19D805AB00F43AA6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4304AE2F19D805AB00F43AA6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		4304AE3519D805AB00F43AA6 /* VKMessagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VKMessagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4304AE3A19D805AB00F43AA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4304AE3B19D805AB00F43AA6 /* VKMessagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VKMessagerTests.m; sourceTree = "<group>"; };
+		64AA3A0BF8A6485B96B535EC /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D872E776E2D14608BD879A93 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				054D1BE7EB384CCE9719CD95 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +67,8 @@
 				4304AE1B19D805AB00F43AA6 /* VKMessager */,
 				4304AE3819D805AB00F43AA6 /* VKMessagerTests */,
 				4304AE1A19D805AB00F43AA6 /* Products */,
+				D872E776E2D14608BD879A93 /* Pods.xcconfig */,
+				5360DCA7E2754517A2FAEE6B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -85,12 +86,9 @@
 			children = (
 				4304AE2019D805AB00F43AA6 /* AppDelegate.h */,
 				4304AE2119D805AB00F43AA6 /* AppDelegate.m */,
-				4304AE2619D805AB00F43AA6 /* ViewController.h */,
-				4304AE2719D805AB00F43AA6 /* ViewController.m */,
 				4304AE2919D805AB00F43AA6 /* Main.storyboard */,
 				4304AE2C19D805AB00F43AA6 /* Images.xcassets */,
 				4304AE2E19D805AB00F43AA6 /* LaunchScreen.xib */,
-				4304AE2319D805AB00F43AA6 /* VKMessager.xcdatamodeld */,
 				4304AE1C19D805AB00F43AA6 /* Supporting Files */,
 			);
 			path = VKMessager;
@@ -122,6 +120,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		5360DCA7E2754517A2FAEE6B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				64AA3A0BF8A6485B96B535EC /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -129,9 +135,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4304AE3F19D805AB00F43AA6 /* Build configuration list for PBXNativeTarget "VKMessager" */;
 			buildPhases = (
+				8F1F16517D7E48109819D411 /* Check Pods Manifest.lock */,
 				4304AE1519D805AB00F43AA6 /* Sources */,
 				4304AE1619D805AB00F43AA6 /* Frameworks */,
 				4304AE1719D805AB00F43AA6 /* Resources */,
+				91E9F98C14654FFE8EC9A03C /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -217,6 +225,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		8F1F16517D7E48109819D411 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		91E9F98C14654FFE8EC9A03C /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		4304AE1519D805AB00F43AA6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -224,8 +265,6 @@
 			files = (
 				4304AE2219D805AB00F43AA6 /* AppDelegate.m in Sources */,
 				4304AE1F19D805AB00F43AA6 /* main.m in Sources */,
-				4304AE2819D805AB00F43AA6 /* ViewController.m in Sources */,
-				4304AE2519D805AB00F43AA6 /* VKMessager.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,6 +386,7 @@
 		};
 		4304AE4019D805AB00F43AA6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D872E776E2D14608BD879A93 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = VKMessager/Info.plist;
@@ -357,6 +397,7 @@
 		};
 		4304AE4119D805AB00F43AA6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D872E776E2D14608BD879A93 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = VKMessager/Info.plist;
@@ -418,6 +459,7 @@
 				4304AE4119D805AB00F43AA6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4304AE4219D805AB00F43AA6 /* Build configuration list for PBXNativeTarget "VKMessagerTests" */ = {
 			isa = XCConfigurationList;
@@ -426,21 +468,9 @@
 				4304AE4419D805AB00F43AA6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		4304AE2319D805AB00F43AA6 /* VKMessager.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				4304AE2419D805AB00F43AA6 /* VKMessager.xcdatamodel */,
-			);
-			currentVersion = 4304AE2419D805AB00F43AA6 /* VKMessager.xcdatamodel */;
-			path = VKMessager.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 4304AE1119D805AB00F43AA6 /* Project object */;
 }
