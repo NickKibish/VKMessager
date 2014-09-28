@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>AFF10A6A-6BE9-42E6-9DC4-DB8FE8C9DD18</string>
+	<key>IDESourceControlProjectName</key>
+	<string>VKMessager</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>7CE763C796D0E51672F045C5152F29298849123D</key>
+		<string>https://github.com/SnowyWhite/VKMessager.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>VKMessager.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>7CE763C796D0E51672F045C5152F29298849123D</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/SnowyWhite/VKMessager.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>7CE763C796D0E51672F045C5152F29298849123D</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>7CE763C796D0E51672F045C5152F29298849123D</string>
+			<key>IDESourceControlWCCName</key>
+			<string>VKMessager</string>
+		</dict>
+	</array>
+</dict>
+</plist>
