@@ -7,7 +7,7 @@
         <!--Root View Controller-->
         <scene sceneID="UJv-L3-9L8">
             <objects>
-                <tableViewController id="xLX-pr-e6D" sceneMemberID="viewController">
+                <tableViewController id="xLX-pr-e6D" customClass="NKDialogList" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="xYe-aq-2Ah">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

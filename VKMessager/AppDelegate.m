@@ -32,20 +32,25 @@
         NSArray *items = [response.json valueForKey:@"items"];
         _dialogList.dialogs = [NSMutableArray arrayWithArray:items];
         NSMutableArray *users = [NSMutableArray array];
+        NSMutableString *uIDs = [NSMutableString string];
         for (id msg in items) {
             NSString *userID = [[msg valueForKey:@"message"] valueForKey:@"user_id"];
             [users addObject:userID];
+            [uIDs insertString:userID atIndex:[uIDs length]];
+            [uIDs insertString:@"," atIndex:[uIDs length]];
         }
-        [self loadUserDataWithUserIDs:users];
+        [uIDs deleteCharactersInRange:NSMakeRange([uIDs length]-1, 1)];
+        [self loadUserDataWithUserIDs:uIDs];
     } errorBlock:^(NSError *error) {
         
     }];
 }
 
-- (void)loadUserDataWithUserIDs:(NSArray *)userIDs
+- (void)loadUserDataWithUserIDs:(NSString *)userIDs
 {
     VKRequest *r = [VKRequest requestWithMethod:@"users.get"
-                                  andParameters:@{@"fields":@"photo_50,online,online_mobile"}
+                                  andParameters:@{@"fields":@"photo_50,online,online_mobile",
+                                                  @"user_ids":userIDs}
                                   andHttpMethod:@"GET"];
     [r executeWithResultBlock:^(VKResponse *response) {
         NSMutableDictionary *users = [NSMutableDictionary dictionary];

@@ -16,7 +16,6 @@
 
 - (void)update
 {
-//   NKDialogList - (void)update
     [self.tableView reloadData];
 }
 
@@ -36,7 +35,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    return _dialogs.count;
 }
 
 
@@ -46,5 +45,9 @@
     
     return cell;
 }
+
+@end
+
+@implementation NKUser
 
 @end
