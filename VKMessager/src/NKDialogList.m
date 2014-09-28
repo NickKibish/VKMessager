@@ -7,6 +7,7 @@
 //
 
 #import "NKDialogList.h"
+#import "AppDelegate.h"
 
 @interface NKDialogList ()
 
@@ -24,6 +25,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    AppDelegate *delegate = [AppDelegate shareDelegate];
+    delegate.dialogView = self;
+    _dialogs = delegate.dialogs;
+    _users = delegate.users;
 }
 
 #pragma mark - Table view data source

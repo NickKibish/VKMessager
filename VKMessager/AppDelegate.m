@@ -30,8 +30,7 @@
                                         andHttpMethod:@"GET"];
     [request executeWithResultBlock:^(VKResponse *response) {
         NSArray *items = [response.json valueForKey:@"items"];
-        _dialogList.dialogs = [NSMutableArray arrayWithArray:items];
-
+        [_dialogs addObjectsFromArray:items];
         NSMutableString *uIDs = [NSMutableString string];
         for (id msg in items) {
             NSString *userID = [[[msg valueForKey:@"message"] valueForKey:@"user_id"] stringValue];
@@ -52,7 +51,6 @@
                                                   @"user_ids":userIDs}
                                   andHttpMethod:@"GET"];
     [r executeWithResultBlock:^(VKResponse *response) {
-        NSMutableDictionary *users = [NSMutableDictionary dictionary];
         for (id userData in response.json) {
             NKUser *user = [[NKUser alloc] init];
             user.fullName = [NSString stringWithFormat:@"%@ %@",
@@ -66,13 +64,27 @@
             user.avatar = image;
             
             NSString *userID = [[userData valueForKey:@"id"] stringValue];
-            [users setValue:user forKey:userID];
+            [_users setValue:user forKey:userID];
         }
-        _dialogList.users = users;
-        [_dialogList update];
+        [_dialogView update];
     } errorBlock:^(NSError *error) {
         
     }];
+}
+
+#pragma mark - Properties
+- (NSMutableArray *)dialogs
+{
+    if (!_dialogs)
+        _dialogs = [NSMutableArray array];
+    return _dialogs;
+}
+
+- (NSMutableDictionary *)users
+{
+    if (!_users)
+        _users = [NSMutableDictionary dictionary];
+    return _users;
 }
 
 #pragma mark - Application delegate
