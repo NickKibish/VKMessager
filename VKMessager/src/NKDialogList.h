@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+/*
+ gray text  121 124 128
+ blue text  78 113 153
+ title      94 136 185
+ 
+ not read   237 242 247
+ */
+
 @class NKUser;
 @interface NKDialogList : UITableViewController <UITabBarDelegate, UITableViewDataSource>
 
@@ -15,6 +23,7 @@
 @property (strong, nonatomic) NSMutableDictionary *users;
 
 - (void)update;
+- (IBAction)logOut:(id)sender;
 
 @end
 
@@ -31,5 +40,6 @@
 @property (strong, nonatomic) IBOutlet UIImageView *myAvatar;
 @property (strong, nonatomic) IBOutlet UILabel *userName;
 @property (strong, nonatomic) IBOutlet UILabel *messagePreview;
+@property (strong, nonatomic) IBOutlet UIView *messageView;
 
 @end

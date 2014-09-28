@@ -5,7 +5,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
+        <!--Сообщения-->
         <scene sceneID="UJv-L3-9L8">
             <objects>
                 <tableViewController id="xLX-pr-e6D" customClass="NKDialogList" sceneMemberID="viewController">
@@ -31,23 +31,35 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OJ8-Sg-mLn">
-                                            <rect key="frame" x="81" y="39" width="511" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.70000000000000007" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cjY-iX-BIm">
+                                            <rect key="frame" x="73" y="33" width="519" height="30"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OJ8-Sg-mLn">
+                                                    <rect key="frame" x="8" y="4" width="511" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.70000000000000007" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="OJ8-Sg-mLn" secondAttribute="trailing" id="8cy-ip-6rB"/>
+                                                <constraint firstItem="OJ8-Sg-mLn" firstAttribute="leading" secondItem="cjY-iX-BIm" secondAttribute="leading" constant="8" id="Rgm-8K-TBo"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="OJ8-Sg-mLn" firstAttribute="leading" secondItem="ABY-cz-HKl" secondAttribute="leadingMargin" constant="73" id="7fJ-zX-DjR"/>
-                                        <constraint firstItem="OJ8-Sg-mLn" firstAttribute="trailing" secondItem="ABY-cz-HKl" secondAttribute="trailingMargin" id="fOg-mH-3gm"/>
+                                        <constraint firstItem="cjY-iX-BIm" firstAttribute="leading" secondItem="ABY-cz-HKl" secondAttribute="leadingMargin" constant="65" id="SXt-pT-DEa"/>
+                                        <constraint firstItem="cjY-iX-BIm" firstAttribute="trailing" secondItem="ABY-cz-HKl" secondAttribute="trailingMargin" id="bF9-au-4ay"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="avatar" destination="PF6-QJ-Nov" id="P20-SB-a6B"/>
                                     <outlet property="messagePreview" destination="OJ8-Sg-mLn" id="RB5-Ae-jfo"/>
+                                    <outlet property="messageView" destination="cjY-iX-BIm" id="UUI-Tr-8YY"/>
                                     <outlet property="myAvatar" destination="wD8-yM-e3Q" id="yFZ-c2-iIs"/>
                                     <outlet property="userName" destination="j29-1b-me0" id="iHS-JJ-sb4"/>
+                                    <segue destination="uwH-tL-wz1" kind="show" id="zCZ-2q-P0H"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -56,11 +68,51 @@
                             <outlet property="delegate" destination="xLX-pr-e6D" id="wp7-ye-boH"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="YEu-Hf-ONw"/>
+                    <navigationItem key="navigationItem" title="Сообщения" id="YEu-Hf-ONw">
+                        <barButtonItem key="leftBarButtonItem" image="logOut" id="DOx-JG-71k">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="logOut:" destination="xLX-pr-e6D" id="gzD-9b-zjy"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YwS-gu-wVd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1193" y="328"/>
+            <point key="canvasLocation" x="1193" y="332"/>
+        </scene>
+        <!--Dialog View-->
+        <scene sceneID="VTG-z6-TRG">
+            <objects>
+                <viewController id="uwH-tL-wz1" customClass="NKDialogView" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="RiG-Te-m4z"/>
+                        <viewControllerLayoutGuide type="bottom" id="8aW-d8-zfD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cmD-13-a65">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="kOs-3z-kU1">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="572"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="uwH-tL-wz1" id="W21-s4-Pds"/>
+                                    <outlet property="delegate" destination="uwH-tL-wz1" id="gPw-Yi-DXS"/>
+                                </connections>
+                            </tableView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GfQ-of-g1c">
+                                <rect key="frame" x="0.0" y="570" width="600" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="anm-mc-PHg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1959" y="332"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cTK-RM-CDg">
@@ -69,6 +121,12 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="AMj-Ee-knT">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.30196078431372547" green="0.46274509803921571" blue="0.67450980392156867" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="textShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="xLX-pr-e6D" kind="relationship" relationship="rootViewController" id="BeS-QX-wvt"/>
@@ -79,4 +137,7 @@
             <point key="canvasLocation" x="462" y="332"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="logOut" width="20" height="20"/>
+    </resources>
 </document>

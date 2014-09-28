@@ -29,6 +29,15 @@
                                            andParameters:@{@"fields":@"photo_50",}
                                            andHttpMethod:@"GET"];
     [avatarRequ executeWithResultBlock:^(VKResponse *response) {
+        NSString *link = [[response.json firstObject] valueForKey:@"photo_50"];
+        NSURL *avatarURL = [NSURL URLWithString:link];
+        NSData *data = [NSData dataWithContentsOfURL:avatarURL];
+        UIImage *image = [UIImage imageWithData:data];
+        
+        UIGraphicsBeginImageContextWithOptions(CGSizeMake(30, 30), NO, 0.0);
+        [image drawInRect:CGRectMake(0, 0, 30, 30)];
+        _selfAvatar= UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
         
     } errorBlock:^(NSError *error) {
         
@@ -138,7 +147,7 @@
 
 - (void)vkSdkShouldPresentViewController:(UIViewController *)controller
 {
-    [_dialogList presentViewController:controller animated:YES completion:^{}];
+    [self.window.rootViewController presentViewController:controller animated:YES completion:^{}];
 }
 
 - (void)vkSdkReceivedNewToken:(VKAccessToken *)newToken

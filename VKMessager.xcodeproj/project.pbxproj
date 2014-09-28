@@ -15,6 +15,7 @@
 		4304AE3019D805AB00F43AA6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4304AE2E19D805AB00F43AA6 /* LaunchScreen.xib */; };
 		4304AE3C19D805AB00F43AA6 /* VKMessagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4304AE3B19D805AB00F43AA6 /* VKMessagerTests.m */; };
 		4304AE4719D8299900F43AA6 /* NKDialogList.m in Sources */ = {isa = PBXBuildFile; fileRef = 4304AE4619D8299900F43AA6 /* NKDialogList.m */; };
+		4336CE6519D8A93C00956285 /* NKDialogView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4336CE6419D8A93C00956285 /* NKDialogView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +42,8 @@
 		4304AE3B19D805AB00F43AA6 /* VKMessagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VKMessagerTests.m; sourceTree = "<group>"; };
 		4304AE4519D8299900F43AA6 /* NKDialogList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NKDialogList.h; path = src/NKDialogList.h; sourceTree = "<group>"; };
 		4304AE4619D8299900F43AA6 /* NKDialogList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NKDialogList.m; path = src/NKDialogList.m; sourceTree = "<group>"; };
+		4336CE6319D8A93C00956285 /* NKDialogView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NKDialogView.h; path = src/NKDialogView.h; sourceTree = "<group>"; };
+		4336CE6419D8A93C00956285 /* NKDialogView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NKDialogView.m; path = src/NKDialogView.m; sourceTree = "<group>"; };
 		64AA3A0BF8A6485B96B535EC /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D872E776E2D14608BD879A93 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -91,6 +94,8 @@
 				4304AE2119D805AB00F43AA6 /* AppDelegate.m */,
 				4304AE4519D8299900F43AA6 /* NKDialogList.h */,
 				4304AE4619D8299900F43AA6 /* NKDialogList.m */,
+				4336CE6319D8A93C00956285 /* NKDialogView.h */,
+				4336CE6419D8A93C00956285 /* NKDialogView.m */,
 				4304AE2919D805AB00F43AA6 /* Main.storyboard */,
 				4304AE2C19D805AB00F43AA6 /* Images.xcassets */,
 				4304AE2E19D805AB00F43AA6 /* LaunchScreen.xib */,
@@ -269,6 +274,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4304AE2219D805AB00F43AA6 /* AppDelegate.m in Sources */,
+				4336CE6519D8A93C00956285 /* NKDialogView.m in Sources */,
 				4304AE1F19D805AB00F43AA6 /* main.m in Sources */,
 				4304AE4719D8299900F43AA6 /* NKDialogList.m in Sources */,
 			);
