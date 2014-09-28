@@ -8,6 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NKDialogList : UITableViewController
+@class NKUser;
+@interface NKDialogList : UITableViewController <UITabBarDelegate, UITableViewDataSource>
+
+@property (strong, nonatomic) NSMutableArray *dialogs;
+@property (strong, nonatomic) NSMutableDictionary *users;
+
+@end
+
+@interface NKUser : NSObject
+
+@property (strong, nonatomic) UIImage *avatar;
+@property (strong, nonatomic) NSString *fullName;
 
 @end

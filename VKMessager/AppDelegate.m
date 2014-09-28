@@ -7,8 +7,12 @@
 //
 
 #import "AppDelegate.h"
+#import "NKDialogList.h"
 
 @interface AppDelegate ()
+{
+    NKDialogList *_dialogList;
+}
 
 @end
 
@@ -22,9 +26,28 @@
 - (void)startWorking
 {
     VKRequest *request = [VKRequest requestWithMethod:@"messages.getDialogs"
-                                        andParameters:@{@"count":@30}
+                                        andParameters:@{@"count":@50}
                                         andHttpMethod:@"GET"];
     [request executeWithResultBlock:^(VKResponse *response) {
+        NSArray *items = [response.json valueForKey:@"items"];
+        _dialogList.dialogs = [NSMutableArray arrayWithArray:items];
+        NSMutableArray *users = [NSMutableArray array];
+        for (id msg in items) {
+            NSString *userID = [[msg valueForKey:@"message"] valueForKey:@"user_id"];
+            [users addObject:userID];
+        }
+        [self loadUserDataWithUserIDs:users];
+    } errorBlock:^(NSError *error) {
+        
+    }];
+}
+
+- (void)loadUserDataWithUserIDs:(NSArray *)userIDs
+{
+    VKRequest *r = [VKRequest requestWithMethod:@"users.get"
+                                  andParameters:@{@"fields":@"photo_50,online,online_mobile"}
+                                  andHttpMethod:@"GET"];
+    [r executeWithResultBlock:^(VKResponse *response) {
         
     } errorBlock:^(NSError *error) {
         
@@ -35,6 +58,7 @@
 - (BOOL)            application:(UIApplication *)application
   didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    _dialogList = [self.window.rootViewController.navigationController.viewControllers firstObject];
     [VKSdk initializeWithDelegate:self andAppId:MY_APP_ID];
     if ([VKSdk wakeUpSession])
     {
@@ -73,8 +97,7 @@
 
 - (void)vkSdkShouldPresentViewController:(UIViewController *)controller
 {
-    UIViewController *mainController = [self.window.rootViewController.navigationController.viewControllers firstObject];
-    [mainController presentViewController:controller animated:YES completion:^{}];
+    [_dialogList presentViewController:controller animated:YES completion:^{}];
 }
 
 - (void)vkSdkReceivedNewToken:(VKAccessToken *)newToken
