@@ -36,8 +36,8 @@
         for (id msg in items) {
             NSString *userID = [[msg valueForKey:@"message"] valueForKey:@"user_id"];
             [users addObject:userID];
-            [uIDs insertString:userID atIndex:[uIDs length]];
-            [uIDs insertString:@"," atIndex:[uIDs length]];
+            [uIDs appendString:userID];
+            [uIDs appendString:@","];
         }
         [uIDs deleteCharactersInRange:NSMakeRange([uIDs length]-1, 1)];
         [self loadUserDataWithUserIDs:uIDs];
