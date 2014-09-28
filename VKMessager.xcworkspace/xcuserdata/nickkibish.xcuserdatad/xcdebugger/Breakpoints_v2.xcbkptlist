@@ -86,7 +86,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VKMessager/AppDelegate.m"
@@ -113,42 +113,12 @@
             endingLineNumber = "133"
             landmarkName = "-vkSdkShouldPresentViewController:"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[AppDelegate vkSdkShouldPresentViewController:]"
-                  moduleName = "VKMessager"
-                  urlString = "file:///Users/nickkibish/Documents/Programming/Xcode/iOS/VK/Messager/VKMessager/VKMessager/AppDelegate.m"
-                  timestampString = "433609579.876977"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "133"
-                  endingLineNumber = "133"
-                  offsetFromSymbolStart = "77">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__48-[AppDelegate vkSdkShouldPresentViewController:]_block_invoke"
-                  moduleName = "VKMessager"
-                  urlString = "file:///Users/nickkibish/Documents/Programming/Xcode/iOS/VK/Messager/VKMessager/VKMessager/AppDelegate.m"
-                  timestampString = "433609579.877298"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "133"
-                  endingLineNumber = "133"
-                  offsetFromSymbolStart = "15">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VKMessager/src/NKDialogList.m"

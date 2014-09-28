@@ -1,4 +1,4 @@
-//
+	//
 //  NKDialogList.h
 //  VKMessager
 //
@@ -22,5 +22,14 @@
 
 @property (strong, nonatomic) UIImage *avatar;
 @property (strong, nonatomic) NSString *fullName;
+
+@end
+
+@interface NKDialogCell : UITableViewCell
+
+@property (strong, nonatomic) IBOutlet UIImageView *avatar;
+@property (strong, nonatomic) IBOutlet UIImageView *myAvatar;
+@property (strong, nonatomic) IBOutlet UILabel *userName;
+@property (strong, nonatomic) IBOutlet UILabel *messagePreview;
 
 @end

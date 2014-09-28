@@ -25,8 +25,16 @@
 
 - (void)startWorking
 {
+    VKRequest *avatarRequ = [VKRequest requestWithMethod:@"users.get"
+                                           andParameters:@{@"fields":@"photo_50",}
+                                           andHttpMethod:@"GET"];
+    [avatarRequ executeWithResultBlock:^(VKResponse *response) {
+        
+    } errorBlock:^(NSError *error) {
+        
+    }];
     VKRequest *request = [VKRequest requestWithMethod:@"messages.getDialogs"
-                                        andParameters:@{@"count":@50}
+                                        andParameters:@{@"count":@30}
                                         andHttpMethod:@"GET"];
     [request executeWithResultBlock:^(VKResponse *response) {
         NSArray *items = [response.json valueForKey:@"items"];

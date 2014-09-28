@@ -19,6 +19,7 @@
 @property (strong, nonatomic) NSMutableArray *dialogs;
 @property (strong, nonatomic) NSMutableDictionary *users;
 @property (strong, nonatomic) NKDialogList *dialogView;
+@property (strong, nonatomic) UIImage *selfAvatar;
 
 + (AppDelegate *)shareDelegate;
 
