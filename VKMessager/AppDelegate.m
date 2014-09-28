@@ -31,11 +31,10 @@
     [request executeWithResultBlock:^(VKResponse *response) {
         NSArray *items = [response.json valueForKey:@"items"];
         _dialogList.dialogs = [NSMutableArray arrayWithArray:items];
-        NSMutableArray *users = [NSMutableArray array];
+
         NSMutableString *uIDs = [NSMutableString string];
         for (id msg in items) {
-            NSString *userID = [[msg valueForKey:@"message"] valueForKey:@"user_id"];
-            [users addObject:userID];
+            NSString *userID = [[[msg valueForKey:@"message"] valueForKey:@"user_id"] stringValue];
             [uIDs appendString:userID];
             [uIDs appendString:@","];
         }
