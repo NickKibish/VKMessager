@@ -14,6 +14,8 @@
 @property (strong, nonatomic) NSMutableArray *dialogs;
 @property (strong, nonatomic) NSMutableDictionary *users;
 
+- (void)update;
+
 @end
 
 @interface NKUser : NSObject

@@ -48,7 +48,24 @@
                                   andParameters:@{@"fields":@"photo_50,online,online_mobile"}
                                   andHttpMethod:@"GET"];
     [r executeWithResultBlock:^(VKResponse *response) {
-        
+        NSMutableDictionary *users = [NSMutableDictionary dictionary];
+        for (id userData in response.json) {
+            NKUser *user = [[NKUser alloc] init];
+            user.fullName = [NSString stringWithFormat:@"%@ %@",
+                             [userData valueForKey:@"first_name"],
+                             [userData valueForKey:@"last_name"]];
+            
+            NSString *avatarLink = [userData valueForKey:@"photo_50"];
+            NSURL *avatarURL = [NSURL URLWithString:avatarLink];
+            NSData *imgData = [NSData dataWithContentsOfURL:avatarURL];
+            UIImage *image = [UIImage imageWithData:imgData];
+            user.avatar = image;
+            
+            NSString *userID = [[userData valueForKey:@"id"] stringValue];
+            [users setValue:user forKey:userID];
+        }
+        _dialogList.users = users;
+        [_dialogList update];
     } errorBlock:^(NSError *error) {
         
     }];
