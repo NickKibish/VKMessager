@@ -93,21 +93,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="kOs-3z-kU1">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="572"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="kOs-3z-kU1">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="562"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="uwH-tL-wz1" id="W21-s4-Pds"/>
                                     <outlet property="delegate" destination="uwH-tL-wz1" id="gPw-Yi-DXS"/>
                                 </connections>
                             </tableView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GfQ-of-g1c">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GfQ-of-g1c">
                                 <rect key="frame" x="0.0" y="570" width="600" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="send" enablesReturnKeyAutomatically="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="uwH-tL-wz1" id="GD2-Pb-dpl"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="GfQ-of-g1c" firstAttribute="top" secondItem="kOs-3z-kU1" secondAttribute="bottom" id="C3W-nW-3uJ"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="kOs-3z-kU1" secondAttribute="bottom" constant="38" id="Hjz-M1-43x"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="GfQ-of-g1c" secondAttribute="trailing" constant="-16" id="Ol3-9a-oZe"/>
+                            <constraint firstItem="GfQ-of-g1c" firstAttribute="leading" secondItem="cmD-13-a65" secondAttribute="leadingMargin" constant="-16" id="k49-Ad-j72"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="anm-mc-PHg" userLabel="First Responder" sceneMemberID="firstResponder"/>

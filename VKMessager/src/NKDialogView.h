@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NKDialogView : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface NKDialogView : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 
 @end

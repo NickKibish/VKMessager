@@ -40,7 +40,8 @@
         UIGraphicsEndImageContext();
         
     } errorBlock:^(NSError *error) {
-        
+        UIAlertView *alert = [[UIAlertView alloc]  initWithTitle:@"Ошибка" message:@"Время подсоеденения к серверу истекло" delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
+        [alert show];
     }];
     VKRequest *request = [VKRequest requestWithMethod:@"messages.getDialogs"
                                         andParameters:@{@"count":@30}
@@ -57,7 +58,7 @@
         [uIDs deleteCharactersInRange:NSMakeRange([uIDs length]-1, 1)];
         [self loadUserDataWithUserIDs:uIDs];
     } errorBlock:^(NSError *error) {
-        
+        NSLog(@"Error: %@", error);
     }];
 }
 
@@ -85,7 +86,7 @@
         }
         [_dialogView update];
     } errorBlock:^(NSError *error) {
-        
+        NSLog(@"Error: %@", error);
     }];
 }
 
@@ -152,7 +153,7 @@
 
 - (void)vkSdkReceivedNewToken:(VKAccessToken *)newToken
 {
-    
+    [self startWorking];
 }
 
 @end
