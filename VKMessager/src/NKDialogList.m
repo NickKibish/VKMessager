@@ -7,6 +7,9 @@
 //
 
 #import "NKDialogList.h"
+#import "NKDialogView.h"
+#import "AppDelegate.h"
+#import "UIImageViewUtiles.h"
 
 @interface NKDialogList ()
 
@@ -14,87 +17,147 @@
 
 @implementation NKDialogList
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+- (void)update
+{
+    [self.tableView reloadData];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (IBAction)logOut:(id)sender
+{
+    [VKSdk forceLogout];
+    [VKSdk initializeWithDelegate:[AppDelegate shareDelegate] andAppId:MY_APP_ID];
+    if (![VKSdk wakeUpSession]) {
+        NSArray *scope = @[VK_PER_FRIENDS, VK_PER_WALL, VK_PER_AUDIO, VK_PER_PHOTOS, VK_PER_NOHTTPS, VK_PER_EMAIL, VK_PER_MESSAGES];
+        [VKSdk authorize:scope revokeAccess:YES];
+    }
+}
+
+#pragma mark - Load View
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    AppDelegate *delegate = [AppDelegate shareDelegate];
+    delegate.dialogView = self;
+    _dialogs = delegate.dialogs;
+    _users = delegate.users;
+//    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
 }
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return _dialogs.count;
 }
 
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NKDialogCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+//    cell.avatar.layer.cornerRadius = cell.avatar.frame.size.width / 2;
+//    cell.avatar.clipsToBounds = YES;
+
+    [cell.avatar makeRound];
     
-    // Configure the cell...
+    id msg = [[_dialogs objectAtIndex:indexPath.row] valueForKey:@"message"];
+    NSString *userID = [[msg valueForKey:@"user_id"] stringValue];
+    NKUser *user = [_users valueForKey:userID];
+    
+    cell.userName.text = user.fullName;
+    cell.avatar.image = user.avatar;
+    
+    [self setCellText:cell withMessage:msg];
+    [self setCellViews:cell withMessage:msg];
     
     return cell;
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+- (void)setCellViews:(NKDialogCell *)cell withMessage:(NSDictionary *)message
+{
+    BOOL sent = [[message valueForKey:@"out"] boolValue];
+    BOOL read = [[message valueForKey:@"read_state"] boolValue];
+    UIColor *blue = [UIColor colorWithRed:237/255.f green:242/255.f blue:247/255.f alpha:1];
+    
+    if (!sent) {
+        cell.myAvatar.image = nil;
+        cell.myAvatar.layer.borderWidth = 0;
+        
+        if (!read) {
+            cell.backgroundColor = blue;
+            cell.messageView.backgroundColor = blue;
+        } else {
+            cell.backgroundColor = [UIColor whiteColor];
+            cell.messageView.backgroundColor = [UIColor whiteColor];
+        }
+    } else {
+        cell.myAvatar.layer.cornerRadius = cell.myAvatar.frame.size.width / 2;
+        cell.myAvatar.clipsToBounds = YES;
+        cell.myAvatar.layer.borderWidth = 2.0f;
+        cell.myAvatar.layer.borderColor = blue.CGColor;
+        cell.myAvatar.image = [AppDelegate shareDelegate].selfAvatar;
+        
+        if (!read) {
+            cell.messageView.backgroundColor = blue;
+            cell.backgroundColor = [UIColor whiteColor];
+        } else {
+            cell.messageView.backgroundColor = [UIColor whiteColor];
+            cell.backgroundColor = [UIColor whiteColor];
+        }
+    }
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+- (void)setCellText:(NKDialogCell *)cell withMessage:(NSDictionary *)message
+{
+    NSArray *attachments = [message valueForKey:@"attachments"];
+    if (!attachments) {
+        cell.messagePreview.textColor = [UIColor colorWithRed:121/255.f green:124/255.f blue:128/255.f alpha:1];
+        cell.messagePreview.text = [message valueForKey:@"body"];
+    } else {
+        id attachment = [attachments firstObject];
+        NSString *type = [attachment valueForKey:@"type"];
+        NSString *messageText = [self getDescriptionWithKey:type];
+        
+        cell.messagePreview.textColor = [UIColor colorWithRed:78/255.f green:113/255.f blue:153/255.f alpha:1];
+        cell.messagePreview.text = messageText;
+    }
 }
-*/
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+- (NSString *)getDescriptionWithKey:(NSString *)key
+{
+    NSDictionary *values = @{@"photo":@"Фотография",
+                             @"video":@"Видеозапись",
+                             @"audio":@"Аудиозапись",
+                             @"doc":@"Документ",
+                             @"wall":@"Запись на стене",
+                             @"wall_reply":@"Комментарий к записи на стене",};
+    return [values valueForKey:key];
 }
-*/
 
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
 #pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"UserIdSeg"]) {
+        NKDialogView *view = segue.destinationViewController;
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        id msg = [[_dialogs objectAtIndex:indexPath.row] valueForKey:@"message"];
+        NSString *uID = [[msg valueForKey:@"user_id"] stringValue];
+        NKUser *user = [_users valueForKey:uID];
+        view.userID = uID;
+        view.user = user;
+    }
 }
-*/
+
+@end
+
+@implementation NKUser
+
+@end
+
+@implementation NKDialogCell
 
 @end

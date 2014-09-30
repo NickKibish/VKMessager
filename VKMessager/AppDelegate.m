@@ -7,8 +7,12 @@
 //
 
 #import "AppDelegate.h"
+#import "NKDialogList.h"
 
 @interface AppDelegate ()
+{
+    NKDialogList *_dialogList;
+}
 
 @end
 
@@ -21,20 +25,111 @@
 
 - (void)startWorking
 {
+    VKRequest *avatarRequ = [VKRequest requestWithMethod:@"users.get"
+                                           andParameters:@{@"fields":@"photo_50",}
+                                           andHttpMethod:@"GET"];
+    [avatarRequ executeWithResultBlock:^(VKResponse *response) {
+        NSString *link = [[response.json firstObject] valueForKey:@"photo_50"];
+        NSURL *avatarURL = [NSURL URLWithString:link];
+        NSData *data = [NSData dataWithContentsOfURL:avatarURL];
+        UIImage *image = [UIImage imageWithData:data];
+        
+        UIGraphicsBeginImageContextWithOptions(CGSizeMake(30, 30), NO, 0.0);
+        [image drawInRect:CGRectMake(0, 0, 30, 30)];
+        _selfAvatar= UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+    } errorBlock:^(NSError *error) {
+        UIAlertView *alert = [[UIAlertView alloc]  initWithTitle:@"Ошибка" message:@"Время подсоеденения к серверу истекло" delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
+        [alert show];
+    }];
     VKRequest *request = [VKRequest requestWithMethod:@"messages.getDialogs"
                                         andParameters:@{@"count":@30}
                                         andHttpMethod:@"GET"];
     [request executeWithResultBlock:^(VKResponse *response) {
-        
+        NSArray *items = [response.json valueForKey:@"items"];
+        [_dialogs addObjectsFromArray:items];
+        NSMutableString *uIDs = [NSMutableString string];
+        for (id msg in items) {
+            NSNumber *chatID = [msg valueForKey:@"chat_id"];
+            if (chatID) {
+                [self loadChatWithMessage:msg];
+            } else {
+                NSString *userID = [[[msg valueForKey:@"message"] valueForKey:@"user_id"] stringValue];
+                [uIDs appendString:userID];
+                [uIDs appendString:@","];
+            }
+        }
+        [uIDs deleteCharactersInRange:NSMakeRange([uIDs length]-1, 1)];
+        [self loadUserDataWithUserIDs:uIDs];
     } errorBlock:^(NSError *error) {
-        
+        NSLog(@"Error: %@", error);
     }];
+}
+
+- (void)loadChatWithMessage:(id)message
+{
+    NKUser *user = [[NKUser alloc] init];
+    user.isDialog = YES;
+    NSString *link = [message valueForKey:@"photo_50"];
+    NSURL *url = [NSURL URLWithString:link];
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    user.avatar = [UIImage imageWithData:data];
+    
+    NSUInteger n = [[message valueForKey:@"users_count"] integerValue];
+    NSString *title = [NSString stringWithFormat:@"%d участников", n];
+    user.fullName = title;
+    [_users setValue:user forKey:[message valueForKey:@"chat_id"]];
+}
+
+- (void)loadUserDataWithUserIDs:(NSString *)userIDs
+{
+    VKRequest *r = [VKRequest requestWithMethod:@"users.get"
+                                  andParameters:@{@"fields":@"photo_50,online,online_mobile",
+                                                  @"user_ids":userIDs}
+                                  andHttpMethod:@"GET"];
+    [r executeWithResultBlock:^(VKResponse *response) {
+        for (id userData in response.json) {
+            NKUser *user = [[NKUser alloc] init];
+            user.isDialog = NO;
+            user.fullName = [NSString stringWithFormat:@"%@ %@",
+                             [userData valueForKey:@"first_name"],
+                             [userData valueForKey:@"last_name"]];
+            
+            NSString *avatarLink = [userData valueForKey:@"photo_50"];
+            NSURL *avatarURL = [NSURL URLWithString:avatarLink];
+            NSData *imgData = [NSData dataWithContentsOfURL:avatarURL];
+            UIImage *image = [UIImage imageWithData:imgData];
+            user.avatar = image;
+            
+            NSString *userID = [[userData valueForKey:@"id"] stringValue];
+            [_users setValue:user forKey:userID];
+        }
+        [_dialogView update];
+    } errorBlock:^(NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
+}
+
+#pragma mark - Properties
+- (NSMutableArray *)dialogs
+{
+    if (!_dialogs)
+        _dialogs = [NSMutableArray array];
+    return _dialogs;
+}
+
+- (NSMutableDictionary *)users
+{
+    if (!_users)
+        _users = [NSMutableDictionary dictionary];
+    return _users;
 }
 
 #pragma mark - Application delegate
 - (BOOL)            application:(UIApplication *)application
   didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    _dialogList = [self.window.rootViewController.navigationController.viewControllers firstObject];
     [VKSdk initializeWithDelegate:self andAppId:MY_APP_ID];
     if ([VKSdk wakeUpSession])
     {
@@ -73,13 +168,17 @@
 
 - (void)vkSdkShouldPresentViewController:(UIViewController *)controller
 {
-    UIViewController *mainController = [self.window.rootViewController.navigationController.viewControllers firstObject];
-    [mainController presentViewController:controller animated:YES completion:^{}];
+    [self.window.rootViewController presentViewController:controller animated:YES completion:^{}];
 }
 
 - (void)vkSdkReceivedNewToken:(VKAccessToken *)newToken
 {
-    
+    [self startWorking];
+}
+
+- (void)vkSdkRenewedToken:(VKAccessToken *)newToken
+{
+    NSLog(@"- (void)vkSdkRenewedToken:(VKAccessToken *)newToken");
 }
 
 @end
