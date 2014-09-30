@@ -9,6 +9,7 @@
 #import "NKDialogView.h"
 #import "AppDelegate.h"
 #import "UIImageViewUtiles.h"
+#import "MessageBubbleView.h"
 
 @interface NKDialogView ()
 {
@@ -121,20 +122,30 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MessageCell" forIndexPath:indexPath];
+    NKMessageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MessageCell" forIndexPath:indexPath];
     cell.transform = CGAffineTransformMakeRotation(M_PI);
     
     id msg = [_messages objectAtIndex:indexPath.row];
     NSString *str = [msg valueForKey:@"body"];
     BOOL sent = [[msg valueForKey:@"out"] boolValue];
     
-    cell.textLabel.text = str;
+//    cell.textLabel.text = str;
+    MessageBubbleViewTailDirection direction;
+    UIColor *color;
     if (sent) {
         cell.textLabel.textAlignment = NSTextAlignmentRight;
+        direction = MessageBubbleViewTailDirectionRight;
+        color = [UIColor blueColor];
     } else {
         cell.textLabel.textAlignment = NSTextAlignmentLeft;
+        direction = MessageBubbleViewTailDirectionLeft;
+        color = [UIColor greenColor];
     }
-    
+    MessageBubbleView *bubble = [[MessageBubbleView alloc] initWithText:str
+                                                              withColor:color
+                                                     withHighlightColor:color
+                                                      withTailDirection:direction];
+    cell.messageView = bubble;
     return cell;
 }
 
@@ -180,5 +191,9 @@
 {
     self.view.center = _originalCenter;
 }
+
+@end
+
+@implementation NKMessageCell
 
 @end

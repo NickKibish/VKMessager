@@ -16,6 +16,17 @@
 		4304AE3C19D805AB00F43AA6 /* VKMessagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4304AE3B19D805AB00F43AA6 /* VKMessagerTests.m */; };
 		4304AE4719D8299900F43AA6 /* NKDialogList.m in Sources */ = {isa = PBXBuildFile; fileRef = 4304AE4619D8299900F43AA6 /* NKDialogList.m */; };
 		4336CE6519D8A93C00956285 /* NKDialogView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4336CE6419D8A93C00956285 /* NKDialogView.m */; };
+		43AA7A3919DAFA38004635B0 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43AA7A2219DAFA38004635B0 /* Default-568h@2x.png */; };
+		43AA7A3A19DAFA38004635B0 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 43AA7A2319DAFA38004635B0 /* Default.png */; };
+		43AA7A3B19DAFA38004635B0 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43AA7A2419DAFA38004635B0 /* Default@2x.png */; };
+		43AA7A3E19DAFA38004635B0 /* ImageBubbleMask@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 43AA7A2719DAFA38004635B0 /* ImageBubbleMask@2x~iphone.png */; };
+		43AA7A3F19DAFA38004635B0 /* ImageBubbleMask~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 43AA7A2819DAFA38004635B0 /* ImageBubbleMask~iphone.png */; };
+		43AA7A4219DAFA38004635B0 /* CopyLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AA7A2D19DAFA38004635B0 /* CopyLabel.m */; };
+		43AA7A4319DAFA38004635B0 /* ImageBubbleAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AA7A2F19DAFA38004635B0 /* ImageBubbleAppDelegate.m */; };
+		43AA7A4419DAFA38004635B0 /* ImageBubbleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AA7A3119DAFA38004635B0 /* ImageBubbleViewController.m */; };
+		43AA7A4619DAFA38004635B0 /* MessageBubbleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AA7A3419DAFA38004635B0 /* MessageBubbleView.m */; };
+		43AA7A4719DAFA38004635B0 /* TextMessageBubbleViewButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AA7A3619DAFA38004635B0 /* TextMessageBubbleViewButton.m */; };
+		43AA7A4819DAFA38004635B0 /* UIImage+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AA7A3819DAFA38004635B0 /* UIImage+Utils.m */; };
 		43F0756C19DA010100757CF8 /* UIImageViewUtiles.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F0756B19DA010100757CF8 /* UIImageViewUtiles.m */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +56,23 @@
 		4304AE4619D8299900F43AA6 /* NKDialogList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NKDialogList.m; path = src/NKDialogList.m; sourceTree = "<group>"; };
 		4336CE6319D8A93C00956285 /* NKDialogView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NKDialogView.h; path = src/NKDialogView.h; sourceTree = "<group>"; };
 		4336CE6419D8A93C00956285 /* NKDialogView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NKDialogView.m; path = src/NKDialogView.m; sourceTree = "<group>"; };
+		43AA7A2219DAFA38004635B0 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		43AA7A2319DAFA38004635B0 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		43AA7A2419DAFA38004635B0 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		43AA7A2719DAFA38004635B0 /* ImageBubbleMask@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ImageBubbleMask@2x~iphone.png"; sourceTree = "<group>"; };
+		43AA7A2819DAFA38004635B0 /* ImageBubbleMask~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ImageBubbleMask~iphone.png"; sourceTree = "<group>"; };
+		43AA7A2C19DAFA38004635B0 /* CopyLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CopyLabel.h; sourceTree = "<group>"; };
+		43AA7A2D19DAFA38004635B0 /* CopyLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CopyLabel.m; sourceTree = "<group>"; };
+		43AA7A2E19DAFA38004635B0 /* ImageBubbleAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageBubbleAppDelegate.h; sourceTree = "<group>"; };
+		43AA7A2F19DAFA38004635B0 /* ImageBubbleAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageBubbleAppDelegate.m; sourceTree = "<group>"; };
+		43AA7A3019DAFA38004635B0 /* ImageBubbleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageBubbleViewController.h; sourceTree = "<group>"; };
+		43AA7A3119DAFA38004635B0 /* ImageBubbleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageBubbleViewController.m; sourceTree = "<group>"; };
+		43AA7A3319DAFA38004635B0 /* MessageBubbleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageBubbleView.h; sourceTree = "<group>"; };
+		43AA7A3419DAFA38004635B0 /* MessageBubbleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageBubbleView.m; sourceTree = "<group>"; };
+		43AA7A3519DAFA38004635B0 /* TextMessageBubbleViewButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextMessageBubbleViewButton.h; sourceTree = "<group>"; };
+		43AA7A3619DAFA38004635B0 /* TextMessageBubbleViewButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextMessageBubbleViewButton.m; sourceTree = "<group>"; };
+		43AA7A3719DAFA38004635B0 /* UIImage+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Utils.h"; sourceTree = "<group>"; };
+		43AA7A3819DAFA38004635B0 /* UIImage+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Utils.m"; sourceTree = "<group>"; };
 		43F0756A19DA010100757CF8 /* UIImageViewUtiles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIImageViewUtiles.h; path = src/opt/UIImageViewUtiles.h; sourceTree = "<group>"; };
 		43F0756B19DA010100757CF8 /* UIImageViewUtiles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIImageViewUtiles.m; path = src/opt/UIImageViewUtiles.m; sourceTree = "<group>"; };
 		64AA3A0BF8A6485B96B535EC /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -134,9 +162,51 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		43AA7A2019DAFA38004635B0 /* buble */ = {
+			isa = PBXGroup;
+			children = (
+				43AA7A2119DAFA38004635B0 /* img */,
+				43AA7A2B19DAFA38004635B0 /* src */,
+			);
+			name = buble;
+			path = src/buble;
+			sourceTree = "<group>";
+		};
+		43AA7A2119DAFA38004635B0 /* img */ = {
+			isa = PBXGroup;
+			children = (
+				43AA7A2219DAFA38004635B0 /* Default-568h@2x.png */,
+				43AA7A2319DAFA38004635B0 /* Default.png */,
+				43AA7A2419DAFA38004635B0 /* Default@2x.png */,
+				43AA7A2719DAFA38004635B0 /* ImageBubbleMask@2x~iphone.png */,
+				43AA7A2819DAFA38004635B0 /* ImageBubbleMask~iphone.png */,
+			);
+			path = img;
+			sourceTree = "<group>";
+		};
+		43AA7A2B19DAFA38004635B0 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				43AA7A2C19DAFA38004635B0 /* CopyLabel.h */,
+				43AA7A2D19DAFA38004635B0 /* CopyLabel.m */,
+				43AA7A2E19DAFA38004635B0 /* ImageBubbleAppDelegate.h */,
+				43AA7A2F19DAFA38004635B0 /* ImageBubbleAppDelegate.m */,
+				43AA7A3019DAFA38004635B0 /* ImageBubbleViewController.h */,
+				43AA7A3119DAFA38004635B0 /* ImageBubbleViewController.m */,
+				43AA7A3319DAFA38004635B0 /* MessageBubbleView.h */,
+				43AA7A3419DAFA38004635B0 /* MessageBubbleView.m */,
+				43AA7A3519DAFA38004635B0 /* TextMessageBubbleViewButton.h */,
+				43AA7A3619DAFA38004635B0 /* TextMessageBubbleViewButton.m */,
+				43AA7A3719DAFA38004635B0 /* UIImage+Utils.h */,
+				43AA7A3819DAFA38004635B0 /* UIImage+Utils.m */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		43F0756D19DA010800757CF8 /* opt */ = {
 			isa = PBXGroup;
 			children = (
+				43AA7A2019DAFA38004635B0 /* buble */,
 				43F0756A19DA010100757CF8 /* UIImageViewUtiles.h */,
 				43F0756B19DA010100757CF8 /* UIImageViewUtiles.m */,
 			);
@@ -233,9 +303,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43AA7A3E19DAFA38004635B0 /* ImageBubbleMask@2x~iphone.png in Resources */,
+				43AA7A3B19DAFA38004635B0 /* Default@2x.png in Resources */,
 				4304AE2B19D805AB00F43AA6 /* Main.storyboard in Resources */,
+				43AA7A3F19DAFA38004635B0 /* ImageBubbleMask~iphone.png in Resources */,
+				43AA7A3919DAFA38004635B0 /* Default-568h@2x.png in Resources */,
 				4304AE3019D805AB00F43AA6 /* LaunchScreen.xib in Resources */,
 				4304AE2D19D805AB00F43AA6 /* Images.xcassets in Resources */,
+				43AA7A3A19DAFA38004635B0 /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,7 +362,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				43F0756C19DA010100757CF8 /* UIImageViewUtiles.m in Sources */,
+				43AA7A4219DAFA38004635B0 /* CopyLabel.m in Sources */,
+				43AA7A4619DAFA38004635B0 /* MessageBubbleView.m in Sources */,
+				43AA7A4819DAFA38004635B0 /* UIImage+Utils.m in Sources */,
+				43AA7A4319DAFA38004635B0 /* ImageBubbleAppDelegate.m in Sources */,
+				43AA7A4719DAFA38004635B0 /* TextMessageBubbleViewButton.m in Sources */,
 				4304AE2219D805AB00F43AA6 /* AppDelegate.m in Sources */,
+				43AA7A4419DAFA38004635B0 /* ImageBubbleViewController.m in Sources */,
 				4336CE6519D8A93C00956285 /* NKDialogView.m in Sources */,
 				4304AE1F19D805AB00F43AA6 /* main.m in Sources */,
 				4304AE4719D8299900F43AA6 /* NKDialogList.m in Sources */,

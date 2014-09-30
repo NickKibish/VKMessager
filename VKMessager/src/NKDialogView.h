@@ -25,3 +25,8 @@
 - (void)update;
 
 @end
+
+@interface NKMessageCell : UITableViewCell
+@property (strong, nonatomic) IBOutlet UIView *messageView;
+
+@end
