@@ -29,6 +29,7 @@
 
 @interface NKUser : NSObject
 
+@property (assign, nonatomic) BOOL isDialog;
 @property (strong, nonatomic) UIImage *avatar;
 @property (strong, nonatomic) NSString *fullName;
 

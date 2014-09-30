@@ -7,7 +7,9 @@
 //
 
 #import "NKDialogList.h"
+#import "NKDialogView.h"
 #import "AppDelegate.h"
+#import "UIImageViewUtiles.h"
 
 @interface NKDialogList ()
 
@@ -57,8 +59,10 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NKDialogCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    cell.avatar.layer.cornerRadius = cell.avatar.frame.size.width / 2;
-    cell.avatar.clipsToBounds = YES;
+//    cell.avatar.layer.cornerRadius = cell.avatar.frame.size.width / 2;
+//    cell.avatar.clipsToBounds = YES;
+
+    [cell.avatar makeRound];
     
     id msg = [[_dialogs objectAtIndex:indexPath.row] valueForKey:@"message"];
     NSString *userID = [[msg valueForKey:@"user_id"] stringValue];
@@ -134,6 +138,20 @@
     return [values valueForKey:key];
 }
 
+#pragma mark - Navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"UserIdSeg"]) {
+        NKDialogView *view = segue.destinationViewController;
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        id msg = [[_dialogs objectAtIndex:indexPath.row] valueForKey:@"message"];
+        NSString *uID = [[msg valueForKey:@"user_id"] stringValue];
+        NKUser *user = [_users valueForKey:uID];
+        view.userID = uID;
+        view.user = user;
+    }
+}
+
 @end
 
 @implementation NKUser
@@ -141,23 +159,5 @@
 @end
 
 @implementation NKDialogCell
-
-- (instancetype)init
-{
-    if (self = [super init]) {
-        self.avatar.layer.cornerRadius = self.avatar.frame.size.width / 2;
-        self.avatar.clipsToBounds = YES;
-    }
-    return self;
-}
-
-- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
-    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        self.avatar.layer.cornerRadius = self.avatar.frame.size.width / 2;
-        self.avatar.clipsToBounds = YES;
-    }
-    return self;
-}
 
 @end

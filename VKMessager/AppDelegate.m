@@ -38,7 +38,6 @@
         [image drawInRect:CGRectMake(0, 0, 30, 30)];
         _selfAvatar= UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
-        
     } errorBlock:^(NSError *error) {
         UIAlertView *alert = [[UIAlertView alloc]  initWithTitle:@"Ошибка" message:@"Время подсоеденения к серверу истекло" delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
         [alert show];
@@ -51,15 +50,35 @@
         [_dialogs addObjectsFromArray:items];
         NSMutableString *uIDs = [NSMutableString string];
         for (id msg in items) {
-            NSString *userID = [[[msg valueForKey:@"message"] valueForKey:@"user_id"] stringValue];
-            [uIDs appendString:userID];
-            [uIDs appendString:@","];
+            NSNumber *chatID = [msg valueForKey:@"chat_id"];
+            if (chatID) {
+                [self loadChatWithMessage:msg];
+            } else {
+                NSString *userID = [[[msg valueForKey:@"message"] valueForKey:@"user_id"] stringValue];
+                [uIDs appendString:userID];
+                [uIDs appendString:@","];
+            }
         }
         [uIDs deleteCharactersInRange:NSMakeRange([uIDs length]-1, 1)];
         [self loadUserDataWithUserIDs:uIDs];
     } errorBlock:^(NSError *error) {
         NSLog(@"Error: %@", error);
     }];
+}
+
+- (void)loadChatWithMessage:(id)message
+{
+    NKUser *user = [[NKUser alloc] init];
+    user.isDialog = YES;
+    NSString *link = [message valueForKey:@"photo_50"];
+    NSURL *url = [NSURL URLWithString:link];
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    user.avatar = [UIImage imageWithData:data];
+    
+    NSUInteger n = [[message valueForKey:@"users_count"] integerValue];
+    NSString *title = [NSString stringWithFormat:@"%d участников", n];
+    user.fullName = title;
+    [_users setValue:user forKey:[message valueForKey:@"chat_id"]];
 }
 
 - (void)loadUserDataWithUserIDs:(NSString *)userIDs
@@ -71,6 +90,7 @@
     [r executeWithResultBlock:^(VKResponse *response) {
         for (id userData in response.json) {
             NKUser *user = [[NKUser alloc] init];
+            user.isDialog = NO;
             user.fullName = [NSString stringWithFormat:@"%@ %@",
                              [userData valueForKey:@"first_name"],
                              [userData valueForKey:@"last_name"]];
