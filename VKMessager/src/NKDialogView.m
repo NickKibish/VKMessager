@@ -14,6 +14,7 @@
 @interface NKDialogView ()
 {
     CGPoint _originalCenter;
+    NSMutableArray *_rowHeight;
 }
 
 @property (strong, nonatomic) NSMutableArray *messages;
@@ -106,13 +107,24 @@
     _originalCenter = self.view.center;
     self.tableView.transform = CGAffineTransformMakeRotation(-M_PI);
     
-//    self.navigationController.navigationBar.topItem.title = @"";
     self.navigationItem.title = self.user.fullName;
     [self.userAvatar makeRound];
     self.userAvatar.image = self.user.avatar;
 
     [self doRequestWithOffset:0];
 }
+
+- (NSString *)getDescriptionWithKey:(NSString *)key
+{
+    NSDictionary *values = @{@"photo":@"Фотография",
+                             @"video":@"Видеозапись",
+                             @"audio":@"Аудиозапись",
+                             @"doc":@"Документ",
+                             @"wall":@"Запись на стене",
+                             @"wall_reply":@"Комментарий к записи на стене",};
+    return [values valueForKey:key];
+}
+
 
 #pragma mark - Table view data source
 
@@ -126,12 +138,23 @@
     cell.transform = CGAffineTransformMakeRotation(M_PI);
     
     id msg = [_messages objectAtIndex:indexPath.row];
-    NSString *str = [msg valueForKey:@"body"];
+    NSArray *attachments = [msg valueForKey:@"attachments"];
+    NSString *str;
+    if (!attachments) {
+        str = [msg valueForKey:@"body"];
+        cell.textLabel.textColor = [UIColor colorWithRed:121/255.f green:124/255.f blue:128/255.f alpha:1];
+    } else {
+        id attachment = [attachments firstObject];
+        NSString *type = [attachment valueForKey:@"type"];
+        str = [self getDescriptionWithKey:type];
+        cell.textLabel.textColor = [UIColor colorWithRed:78/255.f green:113/255.f blue:153/255.f alpha:1];
+    }
     BOOL sent = [[msg valueForKey:@"out"] boolValue];
     
 //    cell.textLabel.text = str;
     MessageBubbleViewTailDirection direction;
     UIColor *color;
+    CGFloat originY;
     if (sent) {
         cell.textLabel.textAlignment = NSTextAlignmentRight;
         direction = MessageBubbleViewTailDirectionRight;
@@ -145,7 +168,10 @@
                                                               withColor:color
                                                      withHighlightColor:color
                                                       withTailDirection:direction];
-    cell.messageView = bubble;
+//    CGRect frame = CGRectMake(<#CGFloat x#>, <#CGFloat y#>, <#CGFloat width#>, <#CGFloat height#>)
+    [bubble sizeToFit];
+//    [cell.messageView addSubview:bubble];
+    cell.textLabel.text = str;
     return cell;
 }
 

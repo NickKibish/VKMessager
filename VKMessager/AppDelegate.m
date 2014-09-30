@@ -176,4 +176,9 @@
     [self startWorking];
 }
 
+- (void)vkSdkRenewedToken:(VKAccessToken *)newToken
+{
+    NSLog(@"- (void)vkSdkRenewedToken:(VKAccessToken *)newToken");
+}
+
 @end
